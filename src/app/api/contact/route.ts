@@ -1,19 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Check if API key exists
+const resendApiKey = process.env.RESEND_API_KEY
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { name, email, message } = body
 
+    // Validate required fields
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: 'Missing required fields: name, email, message' },
         { status: 400 }
       )
     }
+
+    // Check if Resend API key is configured
+    if (!resendApiKey) {
+      console.error('Resend API key is not configured')
+      return NextResponse.json(
+        { error: 'Email service is not configured. Please contact support.' },
+        { status: 503 } // Service Unavailable
+      )
+    }
+
+    // Initialize Resend with API key
+    const resend = new Resend(resendApiKey)
 
     // Send email using Resend
     const { error } = await resend.emails.send({
@@ -47,14 +61,17 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('Resend error:', error)
       return NextResponse.json(
-        { error: 'Failed to send email' },
-        { status: 500 }
+        { error: 'Failed to send email. Please try again later.' },
+        { status: 502 } // Bad Gateway
       )
     }
 
     return NextResponse.json({ success: true }, { status: 201 })
   } catch (error) {
     console.error('Error sending contact form:', error)
-    return NextResponse.json({ error: 'Failed to send message' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'An unexpected error occurred. Please try again.' },
+      { status: 500 }
+    )
   }
 }
