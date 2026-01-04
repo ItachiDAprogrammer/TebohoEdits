@@ -7,7 +7,7 @@ export async function DELETE(
 ) {
   try {
     await db.client.delete({
-      where: { id: params.id }
+      where: { id: params.id } // <- IMPORTANT: must be the database ID
     })
 
     return NextResponse.json({ success: true })

@@ -626,72 +626,80 @@ export default function AdminPage() {
 
             <Separator />
 
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold font-['Arial']">Manage Clients ({clients.length})</h2>
-              {clients.length === 0 ? (
-                <Card>
-                  <CardContent className="text-center py-12">
-                    <Users className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-                    <p className="text-muted-foreground">No clients added yet</p>
-                  </CardContent>
-                </Card>
+        <div className="space-y-4">
+  <h2 className="text-2xl font-bold font-['Arial']">Manage Clients ({clients.length})</h2>
+
+  {clients.length === 0 ? (
+    <Card>
+      <CardContent className="text-center py-12">
+        <Users className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
+        <p className="text-muted-foreground">No clients added yet</p>
+      </CardContent>
+    </Card>
+  ) : (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {clients.map((client) => (
+        <Card key={client.id}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3">
+              {client.logo ? (
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
               ) : (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {clients.map((client) => (
-                    <Card key={client.id}>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-3">
-                          {client.logo ? (
-                            <img
-                              src={client.logo}
-                              alt={client.name}
-                              className="w-10 h-10 rounded-lg object-cover"
-                            />
-                          ) : (
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#E50914] to-[#C41110] flex items-center justify-center text-white font-bold font-['Arial']">
-                              {client.name.charAt(0)}
-                            </div>
-                          )}
-                          {client.name}
-                        </CardTitle>
-                      </CardHeader>
-                      {client.description && (
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
-                            {client.description}
-                          </p>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <Button variant="destructive" size="sm" className="w-full">
-                                <Trash2 className="w-4 h-4 mr-2" />
-                                Delete
-                              </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>Delete Client?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  This will permanently delete "{client.name}". This action cannot be undone.
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction
-                                  onClick={() => handleDeleteClient(client.id)}
-                                  className="bg-[#E50914] hover:bg-[#C41110]"
-                                >
-                                  Delete
-                                </AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
-                        </CardContent>
-                      )}
-                    </Card>
-                  ))}
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#E50914] to-[#C41110] flex items-center justify-center text-white font-bold font-['Arial']">
+                  {client.name.charAt(0)}
                 </div>
               )}
-            </div>
+              {client.name}
+            </CardTitle>
+          </CardHeader>
+
+          {/* Show description if available */}
+          {client.description && (
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
+                {client.description}
+              </p>
+            </CardContent>
+          )}
+
+          {/* Delete button always visible */}
+          <CardContent>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive" size="sm" className="w-full">
+                  <Trash2 className="w-4 h-4 mr-2" />
+                  Delete
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Delete Client?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This will permanently delete "{client.name}". This action cannot be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => handleDeleteClient(client.id)}
+                    className="bg-[#E50914] hover:bg-[#C41110]"
+                  >
+                    Delete
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  )}
+</div>
+
           </TabsContent>
         </Tabs>
       </div>

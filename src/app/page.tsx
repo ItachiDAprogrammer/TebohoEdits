@@ -135,7 +135,7 @@ export default function Home() {
           {/* Back to Top Button */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className={`fixed top-8 right-8 z-50 bg-[#E50914] text-white p-3 rounded-full shadow-lg transition-all duration-500 ${
+            className={`fixed top-1/2 right-8 z-50 bg-[#E50914] text-white p-3 rounded-full shadow-lg transition-all duration-500 ${
               showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
             }`}
             aria-label="Back to top"
@@ -353,6 +353,7 @@ export default function Home() {
                           alt={client.name}
                           className="w-full h-full object-cover"
                         />
+                        
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#E50914] to-[#C41110] flex items-center justify-center text-white font-bold font-['Arial'] text-2xl md:text-3xl">
                           {client.name.charAt(0)}
@@ -499,26 +500,30 @@ export default function Home() {
             </div>
 
             {/* Video Player */}
-            <AspectRatio ratio={selectedVideo?.category === 'short' ? 9 / 16 : 16 / 9}>
-              <div className="w-full h-full bg-black relative">
-                {isVideoLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/90 z-10">
-                    <Loader2 className="w-12 h-12 animate-spin text-[#E50914]" />
-                  </div>
-                )}
-                {!isVideoLoading && selectedVideo && (
-                  <iframe
-                    className="w-full h-full opacity-0 transition-opacity duration-300"
-                    style={{ opacity: '1' }}
-                    onLoad={() => setIsVideoLoading(false)}
-                    src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
-                    title={selectedVideo.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                )}
-              </div>
-            </AspectRatio>
+<AspectRatio ratio={selectedVideo?.category === 'short' ? 9 / 16 : 16 / 9}>
+  <div className="w-full h-full bg-black relative">
+    {/* Loader */}
+    {isVideoLoading && (
+      <div className="absolute inset-0 flex items-center justify-center bg-black/90 z-10">
+        <Loader2 className="w-12 h-12 animate-spin text-[#E50914]" />
+      </div>
+    )}
+
+    {/* IFRAME — ALWAYS RENDERED */}
+    {selectedVideo && (
+      <iframe
+        className={`w-full h-full transition-opacity duration-300 ${
+          isVideoLoading ? 'opacity-0' : 'opacity-100'
+        }`}
+        src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1&rel=0`}
+        title={selectedVideo.title}
+        onLoad={() => setIsVideoLoading(false)}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    )}
+  </div>
+</AspectRatio>
 
             {/* Description */}
             {selectedVideo?.description && (
@@ -555,7 +560,7 @@ function VideoCard({ video, onPlay }: { video: Video; onPlay: () => void }) {
               alt={video.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`
+                (e.target as HTMLImageElement).src = `https://www.youtube.com/embed/${video.youtubeId}`
               }}
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

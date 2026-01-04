@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./fonts.css"
 import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
@@ -52,6 +53,11 @@ export default function RootLayout({
           href="https://fonts.cdnfonts.com/css/batman-forever"
           rel="stylesheet"
         />
+        <link
+  href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap"
+  rel="stylesheet"
+/>
+
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
