@@ -345,8 +345,6 @@ export default function Home() {
            {[
               { icon: Scissors, title: 'Video Editing', desc: 'Professional cuts and transitions' },
               { icon: Film, title: 'Social Media Management', desc: 'Content strategy, posting & growth optimization' },
-              { icon: Palette, title: 'Color Grading', desc: 'Cinematic color enhancement' },
-              { icon: Music, title: 'Sound Design', desc: 'Immersive audio experience' },
               { icon: Youtube, title: 'Video Marketing', desc: 'YouTube & short-form growth strategies' },
               { icon: CheckCircle, title: 'Web Design (Certified)', desc: 'Modern, responsive portfolio & landing pages' }
             ].map((service, i) => (
