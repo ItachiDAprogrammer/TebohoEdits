@@ -162,3 +162,8 @@
   color: white;
   cursor: pointer;
 }
+
+/* hides Radix default close button */
+[data-radix-dialog-close] {
+  display: none !important;
+}
