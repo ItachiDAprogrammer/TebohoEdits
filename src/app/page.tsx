@@ -441,8 +441,7 @@ export default function Home() {
           <p className="text-xs text-muted-foreground font-['Arial']">Creative Video Editor | Visual Storyteller</p>
         </div>
       </footer>
-
-   {/* Certificate Preview Dialog */}
+{/* Certificate Preview Dialog */}
 <Dialog
   open={!!activeCertificate}
   onOpenChange={(open) => {
@@ -528,14 +527,13 @@ export default function Home() {
     }
   }}
 >
-  <DialogContent
-    className={`p-0 border-[#E50914]/20 bg-background overflow-hidden !max-w-none flex flex-col ${
-      selectedVideo?.category === 'short'
-        ? '!w-[40vw] !h-[90vh]'
-        : '!w-[80vw] !h-[80vh]'
-    }`}
-  >
-
+<DialogContent
+  className={`p-0 border-[#E50914]/20 bg-background overflow-hidden !max-w-none flex flex-col ${
+    selectedVideo?.category === 'short'
+      ? '!w-[90vw] sm:!w-[70vw] md:!w-[50vw] lg:!w-[40vw] !h-[90vh]'
+      : '!w-[95vw] md:!w-[80vw] !h-[80vh]'
+  }`}
+>
     <div className="flex items-center justify-between p-4 border-b border-[#E50914]/20 bg-[#E50914]/5 flex-shrink-0">
 
       <div className="flex-1">
@@ -625,24 +623,57 @@ export default function Home() {
   </DialogContent>
 </Dialog>
 
-      {/* Thumbnail Preview Dialog – large with clickable border */}
-      <Dialog open={!!activeThumbnail} onOpenChange={(open) => !open && setActiveThumbnail(null)}>
-        <DialogContent className="!p-0 !w-[75vw] !h-[75vh] !max-w-none bg-background border-[#E50914]/20 overflow-hidden flex flex-col">
-          {activeThumbnail && (
-            <div className="flex-1 flex flex-col items-center p-6 md:p-10">
-              <DialogHeader className="text-center flex-shrink-0">
-                <DialogTitle className="font-['Arial'] text-2xl md:text-3xl">{activeThumbnail.title}</DialogTitle>
-                {activeThumbnail.description && <DialogDescription className="font-['Arial'] text-base md:text-lg mt-3">{activeThumbnail.description}</DialogDescription>}
-              </DialogHeader>
-              <div className="flex-1 w-full flex items-center justify-center min-h-0">
-                <div className="relative w-full max-w-7xl aspect-video max-h-[80vh]">
-                  <img src={activeThumbnail.imageUrl} alt={activeThumbnail.title} className="w-full h-full object-contain rounded-md" />
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+  {/* Thumbnail Preview Dialog */}
+<Dialog
+  open={!!activeThumbnail}
+  onOpenChange={(open) => {
+    if (!open) setActiveThumbnail(null)
+  }}
+>
+  <DialogContent
+    className="
+      p-0
+      border-[#E50914]/20
+      bg-background
+      overflow-hidden
+      !max-w-none
+      flex
+      flex-col
+      !w-[95vw]
+      !h-[85vh]
+      md:!w-[80vw]
+      md:!h-[80vh]
+    "
+  >
+    {activeThumbnail && (
+      <>
+        {/* Header */}
+        <div className="p-4 md:p-6 border-b border-[#E50914]/20 flex-shrink-0">
+          <DialogHeader className="text-center">
+            <DialogTitle className="font-['Arial'] text-2xl md:text-3xl">
+              {activeThumbnail.title}
+            </DialogTitle>
+
+            {activeThumbnail.description && (
+              <DialogDescription className="font-['Arial'] text-base md:text-lg mt-2">
+                {activeThumbnail.description}
+              </DialogDescription>
+            )}
+          </DialogHeader>
+        </div>
+
+        {/* Image Container */}
+        <div className="flex-1 min-h-0 bg-black flex items-center justify-center p-2 md:p-6 overflow-hidden">
+          <img
+            src={activeThumbnail.imageUrl}
+            alt={activeThumbnail.title}
+            className="max-w-full max-h-full object-contain rounded-md"
+          />
+        </div>
+      </>
+    )}
+  </DialogContent>
+</Dialog>
     </div>
   )
 }
