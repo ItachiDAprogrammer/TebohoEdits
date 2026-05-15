@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
+import { motion } from 'framer-motion'
 import { Separator } from '@/components/ui/separator'
 import {
   Play, Scissors, Film, Palette, Mail, CheckCircle,
@@ -171,12 +172,21 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <div ref={sentinelRef} className="absolute top-0 left-0 w-px h-px" aria-hidden="true" />
-
-      {/* Hero Section */}
+{/* Hero Section */}
 <section className="relative overflow-hidden min-h-screen flex items-center px-6 md:px-10 lg:px-20 py-20">
 
   {/* BACKGROUND */}
-  <div className="absolute inset-0 z-0">
+  <motion.div
+    className="absolute inset-0 z-0"
+    animate={{
+      scale: [1, 1.04, 1],
+    }}
+    transition={{
+      duration: 20,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  >
 
     {/* Main Background Image */}
     <Image
@@ -192,25 +202,48 @@ export default function Home() {
     <div className="absolute inset-0 bg-black/70" />
 
     {/* Cyan Atmospheric Lighting */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,229,255,0.18),transparent_35%)]" />
+    <motion.div
+      className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,229,255,0.18),transparent_35%)]"
+      animate={{
+        opacity: [0.7, 1, 0.7],
+      }}
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
 
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(0,229,255,0.12),transparent_30%)]" />
+    <motion.div
+      className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(0,229,255,0.12),transparent_30%)]"
+      animate={{
+        opacity: [0.5, 0.9, 0.5],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
 
     {/* Cinematic Vignette */}
     <div className="absolute inset-0 bg-black/40 [mask-image:radial-gradient(circle,transparent_35%,black)]" />
 
+ 
+
     {/* Noise Texture */}
     <div className="absolute inset-0 opacity-[0.03] mix-blend-screen bg-[url('/noise.png')]" />
 
-
-    {/* Extra Glow Layer */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#00E5FF]/10 rounded-full blur-3xl" />
-
-  </div>
+  </motion.div>
 
   {/* Back To Top */}
-  <button
+  <motion.button
     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    whileHover={{
+      scale: 1.08,
+      boxShadow: "0 0 40px rgba(0,229,255,0.6)",
+    }}
+    whileTap={{ scale: 0.95 }}
     className={`fixed top-1/2 right-4 md:right-8 z-50 p-3 rounded-full bg-[#00E5FF] text-black shadow-[0_0_30px_rgba(0,229,255,0.45)] transition-all duration-300 ${
       showBackToTop
         ? "opacity-100 translate-y-0"
@@ -219,97 +252,178 @@ export default function Home() {
     aria-label="Back to top"
   >
     <ArrowUp className="w-5 h-5" />
-  </button>
+  </motion.button>
 
   {/* CONTENT */}
-  <div className="relative z-10 max-w-7xl w-full mx-auto grid lg:grid-cols-2 gap-16 items-center">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="relative z-10 max-w-7xl w-full mx-auto grid lg:grid-cols-2 gap-16 items-center"
+  >
 
     {/* LEFT SIDE */}
     <div className="space-y-8 text-center lg:text-left">
 
       {/* Small Label */}
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00E5FF]/20 bg-[#00E5FF]/5 backdrop-blur-md shadow-[0_0_25px_rgba(0,229,255,0.08)]">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.7 }}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00E5FF]/20 bg-[#00E5FF]/5 backdrop-blur-md shadow-[0_0_25px_rgba(0,229,255,0.08)]"
+      >
 
-        <div className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
+        <motion.div
+          className="w-2 h-2 rounded-full bg-[#00E5FF]"
+          animate={{
+            opacity: [0.5, 1, 0.5],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+          }}
+        />
 
         <span className="text-sm tracking-[0.25em] uppercase text-[#00E5FF] font-medium">
           Cinematic Editor
         </span>
 
-      </div>
+      </motion.div>
 
       {/* Heading */}
       <div className="space-y-5">
 
-        <h1 className="leading-none tracking-tight">
+        <motion.h1
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="leading-none tracking-tight"
+        >
 
           {/* TEBOHO */}
-          <span className="block text-white font-['Batman_Forever'] text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]">
+          <motion.span
+            className="block text-white font-['Batman_Forever'] text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]"
+            animate={{
+              y: [0, -3, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
 
             TEBOHO
 
-          </span>
+          </motion.span>
 
           {/* EDITS */}
-          <span className="block italic font-black text-[#00E5FF] text-4xl sm:text-5xl md:text-7xl tracking-[0.18em] drop-shadow-[0_0_30px_rgba(0,229,255,0.45)]">
+          <motion.span
+            className="block italic font-black text-[#00E5FF] text-4xl sm:text-5xl md:text-7xl tracking-[0.18em] drop-shadow-[0_0_30px_rgba(0,229,255,0.45)]"
+            animate={{
+              opacity: [0.9, 1, 0.9],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
 
             EDITS
 
-          </span>
+          </motion.span>
 
-        </h1>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-2xl text-white/80 font-light tracking-wide">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="text-lg md:text-2xl text-white/80 font-light tracking-wide"
+        >
 
           Video Editor • Motion Designer • Visual Storyteller
 
-        </p>
+        </motion.p>
 
         {/* Description */}
-        <p className="max-w-lg text-sm sm:text-base md:text-lg text-white/55 leading-relaxed mx-auto lg:mx-0">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="max-w-lg text-sm sm:text-base md:text-lg text-white/55 leading-relaxed mx-auto lg:mx-0"
+        >
 
           Transforming visuals into cinematic experiences through high-retention editing,
           motion graphics, and modern storytelling crafted for creators and brands.
 
-        </p>
+        </motion.p>
 
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
+        className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2"
+      >
 
         {/* Primary Button */}
-        <Button
-          asChild
-          size="lg"
-          className="rounded-2xl bg-[#00E5FF] hover:bg-[#00cfe6] text-black font-bold px-8 shadow-[0_0_40px_rgba(0,229,255,0.45)] transition-all duration-300 hover:scale-[1.03]"
+        <motion.div
+          whileHover={{
+            scale: 1.04,
+            y: -2,
+          }}
+          whileTap={{ scale: 0.97 }}
         >
-          <Link href="#long-form">
+          <Button
+            asChild
+            size="lg"
+            className="rounded-2xl bg-[#00E5FF] hover:bg-[#00cfe6] text-black font-bold px-8 shadow-[0_0_40px_rgba(0,229,255,0.45)] transition-all duration-300"
+          >
+            <Link href="#long-form">
 
-            View My Work
+              View My Work
 
-          </Link>
-        </Button>
+            </Link>
+          </Button>
+        </motion.div>
 
         {/* Secondary Button */}
-        <Button
-          asChild
-          size="lg"
-          variant="outline"
-          className="rounded-2xl border border-[#00E5FF]/30 bg-white/5 backdrop-blur-xl text-[#00E5FF] hover:bg-[#00E5FF]/10 hover:border-[#00E5FF]/60 px-8 transition-all duration-300"
+        <motion.div
+          whileHover={{
+            scale: 1.03,
+            y: -2,
+          }}
+          whileTap={{ scale: 0.97 }}
         >
-          <Link href="#contact">
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="rounded-2xl border border-[#00E5FF]/30 bg-white/5 backdrop-blur-xl text-[#00E5FF] hover:bg-[#00E5FF]/10 hover:border-[#00E5FF]/60 px-8 transition-all duration-300"
+          >
+            <Link href="#contact">
 
-            Get In Touch
+              Get In Touch
 
-          </Link>
-        </Button>
+            </Link>
+          </Button>
+        </motion.div>
 
-      </div>
+      </motion.div>
 
       {/* Stats */}
-      <div className="flex flex-wrap justify-center lg:justify-start gap-10 pt-8">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.8 }}
+        className="flex flex-wrap justify-center lg:justify-start gap-10 pt-8"
+      >
 
         <div>
           <p className="text-3xl font-bold text-[#00E5FF]">50+</p>
@@ -326,18 +440,45 @@ export default function Home() {
           <p className="text-sm text-white/50">Creative Vision</p>
         </div>
 
-      </div>
+      </motion.div>
 
     </div>
 
     {/* RIGHT SIDE */}
-    <div className="relative hidden lg:flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.4, duration: 1 }}
+      className="relative hidden lg:flex items-center justify-center"
+    >
 
       {/* Main Glow */}
-      <div className="absolute w-[520px] h-[520px] rounded-full bg-[#00E5FF]/15 blur-3xl" />
+      <motion.div
+        className="absolute w-[520px] h-[520px] rounded-full bg-[#00E5FF]/15 blur-3xl"
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.5, 0.8, 0.5],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       {/* Floating Card */}
-      <div className="relative w-[430px] h-[430px] rounded-[3rem] border border-[#00E5FF]/20 bg-white/5 backdrop-blur-2xl overflow-hidden shadow-[0_0_60px_rgba(0,229,255,0.18)]">
+      <motion.div
+        animate={{
+          y: [0, -12, 0],
+          rotate: [0, 1, 0],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="relative w-[430px] h-[430px] rounded-[3rem] border border-[#00E5FF]/20 bg-white/5 backdrop-blur-2xl overflow-hidden shadow-[0_0_60px_rgba(0,229,255,0.18)]"
+      >
 
         {/* Glow Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/10 via-transparent to-transparent" />
@@ -350,21 +491,34 @@ export default function Home() {
         {/* Floating Logo */}
         <div className="absolute inset-0 flex items-center justify-center">
 
-          <Image
-            src="/logo.png"
-            alt="Teboho Edits Logo"
-            width={320}
-            height={320}
-            className="object-contain drop-shadow-[0_0_35px_rgba(0,229,255,0.45)]"
-          />
+          <motion.div
+            animate={{
+              y: [0, -8, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+
+            <Image
+              src="/logo.png"
+              alt="Teboho Edits Logo"
+              width={320}
+              height={320}
+              className="object-contain drop-shadow-[0_0_35px_rgba(0,229,255,0.45)]"
+            />
+
+          </motion.div>
 
         </div>
 
-      </div>
+      </motion.div>
 
-    </div>
+    </motion.div>
 
-  </div>
+  </motion.div>
 
 </section>
 
