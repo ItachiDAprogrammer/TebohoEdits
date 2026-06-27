@@ -16,15 +16,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Teboho Edits - Creative Video Editor | Visual Storyteller",
   description:
-    "Professional video editing services by Teboho Edits. Transforming visuals into meaningful stories with Filmora, CapCut, and DaVinci Resolve. Specializing in YouTube videos and Instagram Reels.",
+    "Professional video editing services by Teboho Edits. Transforming visuals into meaningful stories with DaVinci Resolve, Filmora, and CapCut . Specializing in YouTube videos and Instagram Reels.",
   keywords: [
     "Teboho Edits",
     "Video Editor",
     "YouTube Editing",
     "Instagram Reels",
+    "DaVinci Resolve",
     "Filmora",
     "CapCut",
-    "DaVinci Resolve",
     "Color Grading",
     "Motion Graphics",
   ],

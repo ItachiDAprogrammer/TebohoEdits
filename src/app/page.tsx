@@ -522,34 +522,257 @@ export default function Home() {
 
 </section>
 
-      {/* Skills & Tools Section */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16 bg-gradient-to-b from-transparent to-[#00E5FF]/5">
-        <div className="max-w-7xl mx-auto space-y-10 md:space-y-12">
-          <div className="text-center space-y-3 md:space-y-4">
-            <h2 className="text-2xl md:text-4xl font-bold font-['Arial']">Skills & Expertise</h2>
-            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-['Arial']">
-              Mastering the art of visual storytelling with professional tools and techniques
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            <Card className="border-[#00E5FF]/20 hover:border-[#00E5FF]/50 transition-all hover:shadow-lg hover:shadow-[#00E5FF]/10">
-              <CardHeader className="pb-3"><Scissors className="w-8 h-8 md:w-12 md:h-12 text-[#00E5FF] mb-2" /><CardTitle className="text-sm md:text-lg">Editing Software</CardTitle><CardDescription className="text-xs md:text-sm">Industry-standard tools for professional results</CardDescription></CardHeader>
-              <CardContent><div className="flex flex-wrap gap-1 md:gap-2"><Badge className="text-[10px] md:text-xs bg-[#00E5FF]/10 text-[#00E5FF] border-[#00E5FF]/20">Filmora</Badge><Badge className="text-[10px] md:text-xs bg-[#00E5FF]/10 text-[#00E5FF] border-[#00E5FF]/20">CapCut</Badge><Badge className="text-[10px] md:text-xs bg-[#00E5FF]/10 text-[#00E5FF] border-[#00E5FF]/20">DaVinci Resolve</Badge></div></CardContent>
-            </Card>
-            <Card className="border-[#00E5FF]/20 hover:border-[#00E5FF]/50 transition-all hover:shadow-lg hover:shadow-[#00E5FF]/10">
-              <CardHeader className="pb-3"><Film className="w-8 h-8 md:w-12 md:h-12 text-[#00E5FF] mb-2" /><CardTitle className="text-sm md:text-lg">Specializations</CardTitle><CardDescription className="text-xs md:text-sm">Expertise in diverse editing styles</CardDescription></CardHeader>
-              <CardContent><ul className="space-y-1 md:space-y-2 text-xs md:text-sm text-muted-foreground"><li className="flex items-center gap-2"><CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#00E5FF]" />Narrative-driven editing</li><li className="flex items-center gap-2"><CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#00E5FF]" />Color grading</li><li className="flex items-center gap-2"><CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#00E5FF]" />Motion graphics</li><li className="flex items-center gap-2"><CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-[#00E5FF]" />Sound design</li></ul></CardContent>
-            </Card>
-            <Card className="border-[#00E5FF]/20 hover:border-[#00E5FF]/50 transition-all hover:shadow-lg hover:shadow-[#00E5FF]/10 md:col-span-1 col-span-2">
-              <CardHeader className="pb-3"><Palette className="w-8 h-8 md:w-12 md:h-12 text-[#00E5FF] mb-2" /><CardTitle className="text-sm md:text-lg">My Approach</CardTitle><CardDescription className="text-xs md:text-sm">Where creativity meets precision</CardDescription></CardHeader>
-              <CardContent><p className="text-xs md:text-sm text-muted-foreground leading-relaxed">I'm a video editor who loves the craft — the timing, the rhythm, the emotion behind every cut. I use AI tools to speed things up where it makes sense, but I always stay hands-on with the creative process. For me, it's about using tech to support the art, not replace it.</p></CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+    {/* About Me Section */}
+<section className="py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16 bg-gradient-to-b from-[#00E5FF]/5 to-transparent">
+  <div className="max-w-7xl mx-auto space-y-10 md:space-y-12">
 
-      <Separator className="bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent" />
-      <Separator className="bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent" />
+    {/* Header */}
+    <div className="text-center space-y-3 md:space-y-4">
+      <h2 className="text-2xl md:text-4xl font-bold font-['Arial']">
+        About Me
+      </h2>
+      <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto font-['Arial']">
+        The editor behind the timeline.
+      </p>
+    </div>
+
+    {/* Content */}
+    <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      {/* Image */}
+      <div className="flex justify-center">
+        <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden border border-[#00E5FF]/20 shadow-xl shadow-[#00E5FF]/10">
+
+          <Image
+            src="/about-me.jpg"
+            alt="Teboho"
+            fill
+            className="object-cover"
+          />
+
+          {/* Glow */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+        </div>
+      </div>
+
+      {/* Text */}
+      <div className="space-y-6">
+
+       <div className="space-y-6 text-muted-foreground leading-8 text-base md:text-lg font-['Arial']">
+
+          <p>
+            I'm a freelance video editor focused on creating videos that people
+            actually watch not just scroll past. Whether it's a YouTube
+            documentary, podcast, commercial, or short-form content, I believe
+            every edit should have purpose, rhythm, and emotion.
+          </p>
+
+          <p>
+            But editing isn't the only craft I've dedicated my life to.
+            I'm also a professional MMA fighter. Years of training and
+            competition taught me discipline, patience, consistency, and how to
+            perform under pressure qualities I bring into every timeline I work
+            on.
+          </p>
+
+          <p>
+            To me, editing is a lot like fighting. Every movement matters.
+            Every decision has a purpose. The smallest adjustment can completely
+            change the outcome.
+          </p>
+
+          <p>
+            Whether I'm helping creators grow on YouTube or producing polished
+            branded content, my goal stays the same:
+            <span className="text-foreground font-semibold">
+              {" "}create videos people remember.
+            </span>
+          </p>
+
+        </div>
+
+        {/* Skills */}
+        <div className="flex flex-wrap gap-3 pt-2">
+
+          {[
+            "DaVinci Resolve",
+            "YouTube Editing",
+            "Motion Graphics",
+            "Color Grading",
+            "Sound Design",
+            "Storytelling",
+            "Social Media",
+            "Content Strategy",
+          ].map((skill) => (
+            <Badge
+              key={skill}
+              className="bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/20 hover:bg-[#00E5FF]/20 transition-colors px-3 py-1"
+            >
+              {skill}
+            </Badge>
+          ))}
+
+        </div>
+
+         {/* Quote */}
+        <div className="mt-12 border-l-4 border-[#00E5FF] pl-6">
+
+          <p className="italic text-lg text-foreground">
+            "The same discipline that shapes a fighter shapes every frame I edit."
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+{/* Section Separator */}
+<Separator className="bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent" />
+
+{/* Showreel Section */}
+<section
+  id="showreel"
+  className="py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16"
+>
+  <div className="max-w-7xl mx-auto space-y-12">
+
+    {/* Header */}
+    <div className="text-center max-w-3xl mx-auto space-y-4">
+
+      <p className="uppercase tracking-[0.3em] text-sm font-semibold text-[#00E5FF] font-['Arial']">
+        Featured Work
+      </p>
+
+      <h2 className="text-3xl md:text-5xl font-bold font-['Arial']">
+        My Showreel
+      </h2>
+
+      <p className="text-muted-foreground text-sm md:text-lg font-['Arial'] leading-relaxed">
+        A curated collection of my best edits—bringing together cinematic
+        storytelling, motion graphics, sound design, and high-retention
+        pacing in under two minutes.
+      </p>
+
+    </div>
+
+    {/* Video */}
+    <Card className="overflow-hidden border border-[#00E5FF]/20 hover:border-[#00E5FF]/50 transition-all hover:shadow-xl hover:shadow-[#00E5FF]/10 group cursor-pointer">
+
+      <CardContent className="p-0">
+
+        <div
+          className="relative aspect-video bg-black cursor-pointer"
+          onClick={() => {
+            setIsVideoLoading(true)
+            setSelectedVideo({
+              id: "showreel",
+              title: "Teboho Edits Showreel",
+              description:
+                "A showcase of my editing style and best work.",
+              youtubeId: "7YUf464WpGg",
+              category: "long",
+              thumbnail: null,
+            })
+          }}
+        >
+
+          {/* Thumbnail */}
+          <img
+            src="https://img.youtube.com/vi/7YUf464WpGg/maxresdefault.jpg"
+            alt="Showreel"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/10" />
+
+          {/* Center Play Button */}
+          <div className="absolute inset-0 flex items-center justify-center">
+
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-[#00E5FF] text-background flex items-center justify-center shadow-2xl shadow-[#00E5FF]/40 group-hover:scale-110 transition-transform duration-300">
+
+              <Play className="w-10 h-10 fill-current ml-1" />
+
+            </div>
+
+          </div>
+
+          {/* Bottom Text */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+
+            <h3 className="text-white text-2xl md:text-4xl font-bold font-['Arial']">
+              Teboho Edits Showreel
+            </h3>
+
+            <p className="mt-2 text-gray-300 max-w-2xl">
+              Documentary • Podcasts • YouTube • Commercials • Social Media • Motion Graphics
+            </p>
+
+          </div>
+
+        </div>
+
+      </CardContent>
+
+    </Card>
+
+    {/* Feature Cards */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {[
+        {
+          title: "Storytelling",
+          text: "Edits built around emotion and viewer engagement."
+        },
+        {
+          title: "Motion Design",
+          text: "Clean animations that enhance every project."
+        },
+        {
+          title: "Sound Design",
+          text: "Audio that gives every cut more impact."
+        },
+        {
+          title: "Color Grading",
+          text: "Professional finishing for a polished cinematic look."
+        }
+      ].map((item) => (
+
+        <Card
+          key={item.title}
+          className="border-[#00E5FF]/20 hover:border-[#00E5FF]/50 transition-all"
+        >
+          <CardContent className="p-6 space-y-3">
+
+            <div className="w-3 h-3 rounded-full bg-[#00E5FF]" />
+
+            <h3 className="font-bold font-['Arial']">
+              {item.title}
+            </h3>
+
+            <p className="text-sm text-muted-foreground">
+              {item.text}
+            </p>
+
+          </CardContent>
+        </Card>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
+{/* Section Separator */}
+<Separator className="bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent" />
+
       <Separator className="bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent" />
 
       {/* Long Form Section */}
@@ -683,6 +906,10 @@ export default function Home() {
           </div>
         </section>
       )}
+
+
+{/* Section Separator */}
+<Separator className="bg-gradient-to-r from-transparent via-[#E50914]/30 to-transparent" />
 
       <Separator className="bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent" />
 
