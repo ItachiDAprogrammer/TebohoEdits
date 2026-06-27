@@ -544,7 +544,7 @@ export default function Home() {
         <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden border border-[#00E5FF]/20 shadow-xl shadow-[#00E5FF]/10">
 
           <Image
-            src="/about-me.jpg"
+            src="/about-me.JPG"
             alt="Teboho"
             fill
             className="object-cover"
