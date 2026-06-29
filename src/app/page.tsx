@@ -676,7 +676,7 @@ export default function Home() {
               title: "Teboho Edits Showreel",
               description:
                 "A showcase of my editing style and best work.",
-              youtubeId: "7YUf464WpGg",
+              youtubeId: "1xR03BRfS1E",
               category: "long",
               thumbnail: null,
             })
@@ -685,7 +685,7 @@ export default function Home() {
 
           {/* Thumbnail */}
           <img
-            src="https://img.youtube.com/vi/7YUf464WpGg/maxresdefault.jpg"
+            src="https://img.youtube.com/vi/1xR03BRfS1E/maxresdefault.jpg"
             alt="Showreel"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
